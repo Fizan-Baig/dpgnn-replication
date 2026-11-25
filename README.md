@@ -1,4 +1,4 @@
-# DPGNN Replication — Reciprocal Recommendation on Libimseti
+# DPGNN Replication - Reciprocal Recommendation on Libimseti
 
 Replication of **DPGNN** (*Modeling Two-Way Selection Preference for Person-Job Fit*, Yang et al., RecSys 2022 — [RUCAIBox/DPGNN](https://github.com/RUCAIBox/DPGNN)) for reciprocal (two-sided) recommendation, done as part of a Deep Learning course project on matrimony matchmaking with graph neural networks.
 
