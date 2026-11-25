@@ -1,7 +1,7 @@
 {
  "model": "BPR",
  "epochs_cap": 300,
- "seconds": 51.32364559173584,
+ "seconds": 50.31472063064575,
  "best_valid_score": 0.29164934158325195,
  "side_A": {
   "recall@50": 0.176,

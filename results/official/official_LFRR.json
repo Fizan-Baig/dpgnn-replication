@@ -1,7 +1,7 @@
 {
  "model": "LFRR",
  "epochs_cap": 300,
- "seconds": 72.92115640640259,
+ "seconds": 71.91993474960327,
  "best_valid_score": 0.30078935623168945,
  "side_A": {
   "recall@50": 0.1738,
