@@ -1,0 +1,6 @@
+Model,Recall@50 published,Recall@50 official code,Recall@50 ours,NDCG@50 published,NDCG@50 official code,NDCG@50 ours,CRecall@50 published,CRecall@50 official code,CRecall@50 ours
+DPGNN,0.1825,–,0.1808 ± 0.0049,0.0739,–,0.0732 ± 0.0015,0.3007,–,0.2965 ± 0.0041
+LFRR,0.1729,–,–,0.0706,–,–,0.3045,–,–
+LightGCN,0.1510,–,0.1463 ± 0.0013,0.0634,–,0.0615 ± 0.0005,0.2549,–,0.2498 ± 0.0013
+BPRMF,0.1552,–,0.1508 ± 0.0022,0.0661,–,0.0619 ± 0.0003,0.2795,–,0.2767 ± 0.0025
+Popularity,–,–,0.1171,–,–,0.0495,–,–,0.2351

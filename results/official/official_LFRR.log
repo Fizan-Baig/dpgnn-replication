@@ -1,0 +1,457 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795605736.418871     122 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+command line args [--model LFRR --epochs 300 --out /kaggle/working/results_official/official_LFRR.json] will not be used in RecBole
+25 Nov 11:22    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = dataset/libimseti
+checkpoint_dir = saved/
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 30
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'group_by': 'user', 'order': 'RO', 'mode': 'full'}
+repeatable = False
+metrics = ['Recall', 'Precision', 'NDCG', 'MRR']
+topk = [50]
+valid_metric = CRecall
+valid_metric_bigger = True
+eval_batch_size = 2048000
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = male_id
+ITEM_ID_FIELD = female_id
+DIRECT_FIELD = direct
+seq_len = None
+LABEL_FIELD = label
+threshold = {'label': 0.5}
+NEG_PREFIX = neg_
+numerical_features = []
+load_col = {'inter': ['male_id', 'female_id', 'direct', 'biexposure', 'label']}
+unload_col = None
+unused_col = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+biliteral = True
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 128
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+max_sent_num = 10
+max_sent_len = 10
+max_longsent_len = 64
+single_spec = True
+local_rank = 0
+device = cuda
+eval_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+25 Nov 11:22    INFO  libimseti
+The number of users: 6392
+Average actions of users: 94.70943514317008
+The number of items: 6517
+Average actions of items: 92.89257213014119
+The number of inters: 605288
+The sparsity of the dataset: 98.54695997740002%
+Remain Fields: ['male_id', 'female_id', 'direct', 'biexposure', 'label']
+25 Nov 11:22    INFO  [Training]: train_batch_size = [4096] negative sampling: [None]
+25 Nov 11:22    INFO  [Evaluation]: eval_batch_size = [2048000] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'group_by': 'user', 'order': 'RO', 'mode': 'full'}]
+25 Nov 11:22    INFO  LFRR(
+  (user_embedding_1): Embedding(6392, 128)
+  (user_embedding_2): Embedding(6392, 128)
+  (item_embedding_1): Embedding(6517, 128)
+  (item_embedding_2): Embedding(6517, 128)
+  (loss): BPRLoss()
+)
+Trainable parameters: 3304704
+25 Nov 11:22    INFO  epoch 0 training [time: 0.22s, train loss: 15.2492]
+25 Nov 11:22    INFO  epoch 0 evaluating [time: 1.13s, valid_score: 0.011840]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.0087), 'precision@50': np.float64(0.0004), 'ndcg@50': np.float64(0.0023), 'mrr@50': np.float64(0.0011), 'crecall': tensor(0.0118), 'cprecision': tensor(0.0003), 'srecall': tensor(0.0129), 'sprecision': tensor(0.0003), 'rndcg@50': tensor(0.0028, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.0113), 'precision@50': np.float64(0.0004), 'ndcg@50': np.float64(0.0033), 'mrr@50': np.float64(0.0017), 'crecall': tensor(0.0118), 'cprecision': tensor(0.0003), 'srecall': tensor(0.0129), 'sprecision': tensor(0.0003), 'rndcg@50': tensor(0.0028, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 1 training [time: 0.10s, train loss: 15.1538]
+25 Nov 11:22    INFO  epoch 1 evaluating [time: 0.99s, valid_score: 0.013918]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.0127), 'precision@50': np.float64(0.0005), 'ndcg@50': np.float64(0.0033), 'mrr@50': np.float64(0.0013), 'crecall': tensor(0.0139), 'cprecision': tensor(0.0003), 'srecall': tensor(0.0166), 'sprecision': tensor(0.0004), 'rndcg@50': tensor(0.0033, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.012), 'precision@50': np.float64(0.0005), 'ndcg@50': np.float64(0.0034), 'mrr@50': np.float64(0.0017), 'crecall': tensor(0.0139), 'cprecision': tensor(0.0003), 'srecall': tensor(0.0166), 'sprecision': tensor(0.0004), 'rndcg@50': tensor(0.0033, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 2 training [time: 0.09s, train loss: 15.0621]
+25 Nov 11:22    INFO  epoch 2 evaluating [time: 0.99s, valid_score: 0.020357]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.017), 'precision@50': np.float64(0.0008), 'ndcg@50': np.float64(0.005), 'mrr@50': np.float64(0.0025), 'crecall': tensor(0.0204), 'cprecision': tensor(0.0004), 'srecall': tensor(0.0299), 'sprecision': tensor(0.0007), 'rndcg@50': tensor(0.0048, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.0147), 'precision@50': np.float64(0.0008), 'ndcg@50': np.float64(0.0046), 'mrr@50': np.float64(0.0025), 'crecall': tensor(0.0204), 'cprecision': tensor(0.0004), 'srecall': tensor(0.0299), 'sprecision': tensor(0.0007), 'rndcg@50': tensor(0.0048, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 3 training [time: 0.11s, train loss: 14.9454]
+25 Nov 11:22    INFO  epoch 3 evaluating [time: 0.99s, valid_score: 0.041961]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.0263), 'precision@50': np.float64(0.0014), 'ndcg@50': np.float64(0.0098), 'mrr@50': np.float64(0.008), 'crecall': tensor(0.0420), 'cprecision': tensor(0.0009), 'srecall': tensor(0.0461), 'sprecision': tensor(0.0010), 'rndcg@50': tensor(0.0096, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.0256), 'precision@50': np.float64(0.0015), 'ndcg@50': np.float64(0.0094), 'mrr@50': np.float64(0.0079), 'crecall': tensor(0.0420), 'cprecision': tensor(0.0009), 'srecall': tensor(0.0461), 'sprecision': tensor(0.0010), 'rndcg@50': tensor(0.0096, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 4 training [time: 0.10s, train loss: 14.7780]
+25 Nov 11:22    INFO  epoch 4 evaluating [time: 1.01s, valid_score: 0.081637]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.0439), 'precision@50': np.float64(0.0023), 'ndcg@50': np.float64(0.0171), 'mrr@50': np.float64(0.0161), 'crecall': tensor(0.0816), 'cprecision': tensor(0.0018), 'srecall': tensor(0.0615), 'sprecision': tensor(0.0013), 'rndcg@50': tensor(0.0179, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.046), 'precision@50': np.float64(0.0026), 'ndcg@50': np.float64(0.0188), 'mrr@50': np.float64(0.0199), 'crecall': tensor(0.0816), 'cprecision': tensor(0.0018), 'srecall': tensor(0.0615), 'sprecision': tensor(0.0013), 'rndcg@50': tensor(0.0179, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 5 training [time: 0.10s, train loss: 14.5302]
+25 Nov 11:22    INFO  epoch 5 evaluating [time: 1.00s, valid_score: 0.138762]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.0738), 'precision@50': np.float64(0.0035), 'ndcg@50': np.float64(0.0297), 'mrr@50': np.float64(0.0272), 'crecall': tensor(0.1388), 'cprecision': tensor(0.0030), 'srecall': tensor(0.0652), 'sprecision': tensor(0.0014), 'rndcg@50': tensor(0.0294, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.07), 'precision@50': np.float64(0.004), 'ndcg@50': np.float64(0.029), 'mrr@50': np.float64(0.0293), 'crecall': tensor(0.1388), 'cprecision': tensor(0.0030), 'srecall': tensor(0.0652), 'sprecision': tensor(0.0014), 'rndcg@50': tensor(0.0294, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 6 training [time: 0.11s, train loss: 14.1575]
+25 Nov 11:22    INFO  epoch 6 evaluating [time: 1.00s, valid_score: 0.183423]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.0955), 'precision@50': np.float64(0.0045), 'ndcg@50': np.float64(0.0408), 'mrr@50': np.float64(0.037), 'crecall': tensor(0.1834), 'cprecision': tensor(0.0040), 'srecall': tensor(0.0677), 'sprecision': tensor(0.0015), 'rndcg@50': tensor(0.0388, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.09), 'precision@50': np.float64(0.005), 'ndcg@50': np.float64(0.0367), 'mrr@50': np.float64(0.0348), 'crecall': tensor(0.1834), 'cprecision': tensor(0.0040), 'srecall': tensor(0.0677), 'sprecision': tensor(0.0015), 'rndcg@50': tensor(0.0388, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 7 training [time: 0.09s, train loss: 13.6158]
+25 Nov 11:22    INFO  epoch 7 evaluating [time: 1.00s, valid_score: 0.216660]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1171), 'precision@50': np.float64(0.0052), 'ndcg@50': np.float64(0.051), 'mrr@50': np.float64(0.0462), 'crecall': tensor(0.2167), 'cprecision': tensor(0.0047), 'srecall': tensor(0.0677), 'sprecision': tensor(0.0015), 'rndcg@50': tensor(0.0473, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1074), 'precision@50': np.float64(0.0057), 'ndcg@50': np.float64(0.0435), 'mrr@50': np.float64(0.0407), 'crecall': tensor(0.2167), 'cprecision': tensor(0.0047), 'srecall': tensor(0.0677), 'sprecision': tensor(0.0015), 'rndcg@50': tensor(0.0473, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 8 training [time: 0.10s, train loss: 12.8595]
+25 Nov 11:22    INFO  epoch 8 evaluating [time: 1.00s, valid_score: 0.240756]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1369), 'precision@50': np.float64(0.0058), 'ndcg@50': np.float64(0.0596), 'mrr@50': np.float64(0.0537), 'crecall': tensor(0.2408), 'cprecision': tensor(0.0052), 'srecall': tensor(0.0694), 'sprecision': tensor(0.0015), 'rndcg@50': tensor(0.0540, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1167), 'precision@50': np.float64(0.0062), 'ndcg@50': np.float64(0.0484), 'mrr@50': np.float64(0.0453), 'crecall': tensor(0.2408), 'cprecision': tensor(0.0052), 'srecall': tensor(0.0694), 'sprecision': tensor(0.0015), 'rndcg@50': tensor(0.0540, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 9 training [time: 0.09s, train loss: 11.8987]
+25 Nov 11:22    INFO  epoch 9 evaluating [time: 1.00s, valid_score: 0.260698]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1511), 'precision@50': np.float64(0.0063), 'ndcg@50': np.float64(0.0665), 'mrr@50': np.float64(0.0596), 'crecall': tensor(0.2607), 'cprecision': tensor(0.0057), 'srecall': tensor(0.0752), 'sprecision': tensor(0.0016), 'rndcg@50': tensor(0.0599, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1298), 'precision@50': np.float64(0.0067), 'ndcg@50': np.float64(0.0532), 'mrr@50': np.float64(0.0489), 'crecall': tensor(0.2607), 'cprecision': tensor(0.0057), 'srecall': tensor(0.0752), 'sprecision': tensor(0.0016), 'rndcg@50': tensor(0.0599, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 10 training [time: 0.09s, train loss: 10.7455]
+25 Nov 11:22    INFO  epoch 10 evaluating [time: 1.00s, valid_score: 0.267345]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1564), 'precision@50': np.float64(0.0064), 'ndcg@50': np.float64(0.0698), 'mrr@50': np.float64(0.0621), 'crecall': tensor(0.2673), 'cprecision': tensor(0.0058), 'srecall': tensor(0.0802), 'sprecision': tensor(0.0017), 'rndcg@50': tensor(0.0630, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1356), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.056), 'mrr@50': np.float64(0.0512), 'crecall': tensor(0.2673), 'cprecision': tensor(0.0058), 'srecall': tensor(0.0802), 'sprecision': tensor(0.0017), 'rndcg@50': tensor(0.0630, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 11 training [time: 0.09s, train loss: 9.5214]
+25 Nov 11:22    INFO  epoch 11 evaluating [time: 1.00s, valid_score: 0.275239]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1644), 'precision@50': np.float64(0.0067), 'ndcg@50': np.float64(0.0724), 'mrr@50': np.float64(0.0636), 'crecall': tensor(0.2752), 'cprecision': tensor(0.0060), 'srecall': tensor(0.0881), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0656, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1406), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0586), 'mrr@50': np.float64(0.0536), 'crecall': tensor(0.2752), 'cprecision': tensor(0.0060), 'srecall': tensor(0.0881), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0656, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 12 training [time: 0.09s, train loss: 8.3133]
+25 Nov 11:22    INFO  epoch 12 evaluating [time: 1.01s, valid_score: 0.279601]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1688), 'precision@50': np.float64(0.0068), 'ndcg@50': np.float64(0.0741), 'mrr@50': np.float64(0.0649), 'crecall': tensor(0.2796), 'cprecision': tensor(0.0061), 'srecall': tensor(0.0868), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0672, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1434), 'precision@50': np.float64(0.0073), 'ndcg@50': np.float64(0.0601), 'mrr@50': np.float64(0.0547), 'crecall': tensor(0.2796), 'cprecision': tensor(0.0061), 'srecall': tensor(0.0868), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0672, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 13 training [time: 0.10s, train loss: 7.2110]
+25 Nov 11:22    INFO  epoch 13 evaluating [time: 1.02s, valid_score: 0.284171]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1711), 'precision@50': np.float64(0.0069), 'ndcg@50': np.float64(0.0747), 'mrr@50': np.float64(0.0651), 'crecall': tensor(0.2842), 'cprecision': tensor(0.0062), 'srecall': tensor(0.0868), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0684, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1473), 'precision@50': np.float64(0.0074), 'ndcg@50': np.float64(0.0619), 'mrr@50': np.float64(0.0561), 'crecall': tensor(0.2842), 'cprecision': tensor(0.0062), 'srecall': tensor(0.0868), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0684, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 14 training [time: 0.10s, train loss: 6.2158]
+25 Nov 11:22    INFO  epoch 14 evaluating [time: 1.00s, valid_score: 0.288949]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.174), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0762), 'mrr@50': np.float64(0.0664), 'crecall': tensor(0.2889), 'cprecision': tensor(0.0063), 'srecall': tensor(0.0889), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0699, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1507), 'precision@50': np.float64(0.0076), 'ndcg@50': np.float64(0.0634), 'mrr@50': np.float64(0.0574), 'crecall': tensor(0.2889), 'cprecision': tensor(0.0063), 'srecall': tensor(0.0889), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0699, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 15 training [time: 0.09s, train loss: 5.4152]
+25 Nov 11:22    INFO  epoch 15 evaluating [time: 1.00s, valid_score: 0.291857]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1757), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.077), 'mrr@50': np.float64(0.0669), 'crecall': tensor(0.2919), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0897), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0708, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1529), 'precision@50': np.float64(0.0076), 'ndcg@50': np.float64(0.0644), 'mrr@50': np.float64(0.0579), 'crecall': tensor(0.2919), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0897), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0708, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 16 training [time: 0.10s, train loss: 4.7091]
+25 Nov 11:22    INFO  epoch 16 evaluating [time: 1.01s, valid_score: 0.294350]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1789), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0776), 'mrr@50': np.float64(0.0671), 'crecall': tensor(0.2943), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0889), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0715, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1534), 'precision@50': np.float64(0.0076), 'ndcg@50': np.float64(0.0653), 'mrr@50': np.float64(0.0592), 'crecall': tensor(0.2943), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0889), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0715, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 17 training [time: 0.10s, train loss: 4.1445]
+25 Nov 11:22    INFO  epoch 17 evaluating [time: 1.00s, valid_score: 0.296219]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1805), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0777), 'mrr@50': np.float64(0.0668), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0877), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0719, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1539), 'precision@50': np.float64(0.0077), 'ndcg@50': np.float64(0.0659), 'mrr@50': np.float64(0.0599), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0877), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0719, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 18 training [time: 0.09s, train loss: 3.6575]
+25 Nov 11:22    INFO  epoch 18 evaluating [time: 1.00s, valid_score: 0.297050]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1807), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0773), 'mrr@50': np.float64(0.0663), 'crecall': tensor(0.2971), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0885), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0719, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1542), 'precision@50': np.float64(0.0077), 'ndcg@50': np.float64(0.0664), 'mrr@50': np.float64(0.0604), 'crecall': tensor(0.2971), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0885), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0719, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 19 training [time: 0.09s, train loss: 3.2480]
+25 Nov 11:22    INFO  epoch 19 evaluating [time: 1.00s, valid_score: 0.297258]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1803), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0767), 'mrr@50': np.float64(0.0654), 'crecall': tensor(0.2973), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0893), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1551), 'precision@50': np.float64(0.0078), 'ndcg@50': np.float64(0.0668), 'mrr@50': np.float64(0.0607), 'crecall': tensor(0.2973), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0893), 'sprecision': tensor(0.0019), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 20 training [time: 0.09s, train loss: 2.9015]
+25 Nov 11:22    INFO  epoch 20 evaluating [time: 1.00s, valid_score: 0.297466]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1805), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0764), 'mrr@50': np.float64(0.0649), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0897), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1553), 'precision@50': np.float64(0.0078), 'ndcg@50': np.float64(0.0672), 'mrr@50': np.float64(0.0608), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0897), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 21 training [time: 0.09s, train loss: 2.6176]
+25 Nov 11:22    INFO  epoch 21 evaluating [time: 1.03s, valid_score: 0.296843]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1789), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0763), 'mrr@50': np.float64(0.0651), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0906), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.156), 'precision@50': np.float64(0.0078), 'ndcg@50': np.float64(0.0673), 'mrr@50': np.float64(0.0608), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0906), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})
+25 Nov 11:22    INFO  epoch 22 training [time: 0.11s, train loss: 2.3618]
+25 Nov 11:22    INFO  epoch 22 evaluating [time: 1.00s, valid_score: 0.297466]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1806), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0769), 'mrr@50': np.float64(0.0655), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0922), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1565), 'precision@50': np.float64(0.0078), 'ndcg@50': np.float64(0.0675), 'mrr@50': np.float64(0.0608), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0922), 'sprecision': tensor(0.0020), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 23 training [time: 0.11s, train loss: 2.1237]
+25 Nov 11:22    INFO  epoch 23 evaluating [time: 1.01s, valid_score: 0.296635]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1781), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0761), 'mrr@50': np.float64(0.0648), 'crecall': tensor(0.2966), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0943), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1597), 'precision@50': np.float64(0.0079), 'ndcg@50': np.float64(0.0682), 'mrr@50': np.float64(0.061), 'crecall': tensor(0.2966), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0943), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})
+25 Nov 11:22    INFO  epoch 24 training [time: 0.09s, train loss: 1.9380]
+25 Nov 11:22    INFO  epoch 24 evaluating [time: 1.00s, valid_score: 0.298920]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1804), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0765), 'mrr@50': np.float64(0.0647), 'crecall': tensor(0.2989), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0960), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0725, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.16), 'precision@50': np.float64(0.0079), 'ndcg@50': np.float64(0.0684), 'mrr@50': np.float64(0.061), 'crecall': tensor(0.2989), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0960), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0725, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 25 training [time: 0.10s, train loss: 1.7635]
+25 Nov 11:22    INFO  epoch 25 evaluating [time: 1.01s, valid_score: 0.299543]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.181), 'precision@50': np.float64(0.0073), 'ndcg@50': np.float64(0.077), 'mrr@50': np.float64(0.0653), 'crecall': tensor(0.2995), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0728, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1599), 'precision@50': np.float64(0.0079), 'ndcg@50': np.float64(0.0686), 'mrr@50': np.float64(0.0615), 'crecall': tensor(0.2995), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0728, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 26 training [time: 0.10s, train loss: 1.6299]
+25 Nov 11:22    INFO  epoch 26 evaluating [time: 1.00s, valid_score: 0.300789]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1805), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0765), 'mrr@50': np.float64(0.0648), 'crecall': tensor(0.3008), 'cprecision': tensor(0.0066), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0729, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1619), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0692), 'mrr@50': np.float64(0.0621), 'crecall': tensor(0.3008), 'cprecision': tensor(0.0066), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0729, dtype=torch.float64)})
+25 Nov 11:22    INFO  Saving current: saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:22    INFO  epoch 27 training [time: 0.09s, train loss: 1.4892]
+25 Nov 11:22    INFO  epoch 27 evaluating [time: 1.00s, valid_score: 0.299751]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1802), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0766), 'mrr@50': np.float64(0.0652), 'crecall': tensor(0.2998), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0960), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0728, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1608), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.069), 'mrr@50': np.float64(0.0621), 'crecall': tensor(0.2998), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0960), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0728, dtype=torch.float64)})
+25 Nov 11:22    INFO  epoch 28 training [time: 0.10s, train loss: 1.3695]
+25 Nov 11:22    INFO  epoch 28 evaluating [time: 1.01s, valid_score: 0.300582]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1797), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0765), 'mrr@50': np.float64(0.0651), 'crecall': tensor(0.3006), 'cprecision': tensor(0.0066), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0728, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1627), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0691), 'mrr@50': np.float64(0.0618), 'crecall': tensor(0.3006), 'cprecision': tensor(0.0066), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0728, dtype=torch.float64)})
+25 Nov 11:22    INFO  epoch 29 training [time: 0.09s, train loss: 1.2635]
+25 Nov 11:22    INFO  epoch 29 evaluating [time: 1.00s, valid_score: 0.298920]
+25 Nov 11:22    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1783), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0758), 'mrr@50': np.float64(0.0644), 'crecall': tensor(0.2989), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0725, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.164), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0692), 'mrr@50': np.float64(0.0616), 'crecall': tensor(0.2989), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0725, dtype=torch.float64)})
+25 Nov 11:22    INFO  epoch 30 training [time: 0.10s, train loss: 1.1751]
+25 Nov 11:23    INFO  epoch 30 evaluating [time: 1.01s, valid_score: 0.297466]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.178), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0762), 'mrr@50': np.float64(0.0652), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0727, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1623), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0691), 'mrr@50': np.float64(0.0617), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0727, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 31 training [time: 0.09s, train loss: 1.1015]
+25 Nov 11:23    INFO  epoch 31 evaluating [time: 1.00s, valid_score: 0.298089]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1774), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0762), 'mrr@50': np.float64(0.0654), 'crecall': tensor(0.2981), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0956), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0727, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1624), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0691), 'mrr@50': np.float64(0.0617), 'crecall': tensor(0.2981), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0956), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0727, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 32 training [time: 0.09s, train loss: 1.0094]
+25 Nov 11:23    INFO  epoch 32 evaluating [time: 1.00s, valid_score: 0.296427]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1775), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0759), 'mrr@50': np.float64(0.0647), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0956), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1609), 'precision@50': np.float64(0.0079), 'ndcg@50': np.float64(0.0685), 'mrr@50': np.float64(0.0612), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0956), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 33 training [time: 0.09s, train loss: 0.9494]
+25 Nov 11:23    INFO  epoch 33 evaluating [time: 1.00s, valid_score: 0.295388]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1761), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0755), 'mrr@50': np.float64(0.0642), 'crecall': tensor(0.2954), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0956), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1615), 'precision@50': np.float64(0.0079), 'ndcg@50': np.float64(0.0686), 'mrr@50': np.float64(0.0614), 'crecall': tensor(0.2954), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0956), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 34 training [time: 0.09s, train loss: 0.8828]
+25 Nov 11:23    INFO  epoch 34 evaluating [time: 1.01s, valid_score: 0.296219]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1766), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0754), 'mrr@50': np.float64(0.0639), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1626), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0688), 'mrr@50': np.float64(0.0614), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 35 training [time: 0.09s, train loss: 0.8321]
+25 Nov 11:23    INFO  epoch 35 evaluating [time: 1.00s, valid_score: 0.296843]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1759), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0754), 'mrr@50': np.float64(0.064), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1632), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.069), 'mrr@50': np.float64(0.0615), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 36 training [time: 0.09s, train loss: 0.7797]
+25 Nov 11:23    INFO  epoch 36 evaluating [time: 1.00s, valid_score: 0.295804]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1755), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0752), 'mrr@50': np.float64(0.0639), 'crecall': tensor(0.2958), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1631), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0689), 'mrr@50': np.float64(0.0614), 'crecall': tensor(0.2958), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 37 training [time: 0.10s, train loss: 0.7390]
+25 Nov 11:23    INFO  epoch 37 evaluating [time: 1.01s, valid_score: 0.297466]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1769), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0754), 'mrr@50': np.float64(0.0636), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1633), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0689), 'mrr@50': np.float64(0.0612), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 38 training [time: 0.10s, train loss: 0.6956]
+25 Nov 11:23    INFO  epoch 38 evaluating [time: 1.00s, valid_score: 0.296843]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1773), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0755), 'mrr@50': np.float64(0.0636), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0972), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1628), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0689), 'mrr@50': np.float64(0.0611), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0972), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 39 training [time: 0.09s, train loss: 0.6485]
+25 Nov 11:23    INFO  epoch 39 evaluating [time: 1.02s, valid_score: 0.296635]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1773), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0753), 'mrr@50': np.float64(0.0633), 'crecall': tensor(0.2966), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0972), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1631), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0689), 'mrr@50': np.float64(0.0611), 'crecall': tensor(0.2966), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0972), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 40 training [time: 0.10s, train loss: 0.6144]
+25 Nov 11:23    INFO  epoch 40 evaluating [time: 1.00s, valid_score: 0.297881]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1764), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0748), 'mrr@50': np.float64(0.0624), 'crecall': tensor(0.2979), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1648), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0692), 'mrr@50': np.float64(0.0609), 'crecall': tensor(0.2979), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 41 training [time: 0.09s, train loss: 0.5823]
+25 Nov 11:23    INFO  epoch 41 evaluating [time: 1.00s, valid_score: 0.296635]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1764), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0746), 'mrr@50': np.float64(0.0622), 'crecall': tensor(0.2966), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1637), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.069), 'mrr@50': np.float64(0.0609), 'crecall': tensor(0.2966), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0718, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 42 training [time: 0.09s, train loss: 0.5581]
+25 Nov 11:23    INFO  epoch 42 evaluating [time: 1.00s, valid_score: 0.297466]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1764), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0745), 'mrr@50': np.float64(0.0621), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1637), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0694), 'mrr@50': np.float64(0.0614), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 43 training [time: 0.09s, train loss: 0.5250]
+25 Nov 11:23    INFO  epoch 43 evaluating [time: 1.00s, valid_score: 0.296843]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1761), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0744), 'mrr@50': np.float64(0.0619), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1635), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0696), 'mrr@50': np.float64(0.062), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 44 training [time: 0.09s, train loss: 0.5065]
+25 Nov 11:23    INFO  epoch 44 evaluating [time: 1.00s, valid_score: 0.296219]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1755), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0744), 'mrr@50': np.float64(0.062), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1641), 'precision@50': np.float64(0.0081), 'ndcg@50': np.float64(0.0695), 'mrr@50': np.float64(0.0616), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 45 training [time: 0.09s, train loss: 0.4845]
+25 Nov 11:23    INFO  epoch 45 evaluating [time: 1.00s, valid_score: 0.296427]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1761), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0744), 'mrr@50': np.float64(0.0618), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1638), 'precision@50': np.float64(0.0081), 'ndcg@50': np.float64(0.0696), 'mrr@50': np.float64(0.0618), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 46 training [time: 0.10s, train loss: 0.4593]
+25 Nov 11:23    INFO  epoch 46 evaluating [time: 1.00s, valid_score: 0.297466]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1775), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0749), 'mrr@50': np.float64(0.0622), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0993), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1634), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0696), 'mrr@50': np.float64(0.0621), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0993), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 47 training [time: 0.09s, train loss: 0.4388]
+25 Nov 11:23    INFO  epoch 47 evaluating [time: 1.00s, valid_score: 0.297466]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.177), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0749), 'mrr@50': np.float64(0.0622), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1638), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0697), 'mrr@50': np.float64(0.0622), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 48 training [time: 0.09s, train loss: 0.4234]
+25 Nov 11:23    INFO  epoch 48 evaluating [time: 1.01s, valid_score: 0.297466]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1779), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0751), 'mrr@50': np.float64(0.0622), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1624), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0694), 'mrr@50': np.float64(0.0619), 'crecall': tensor(0.2975), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0976), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 49 training [time: 0.14s, train loss: 0.3999]
+25 Nov 11:23    INFO  epoch 49 evaluating [time: 1.00s, valid_score: 0.296427]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1777), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0749), 'mrr@50': np.float64(0.0614), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1611), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.069), 'mrr@50': np.float64(0.0617), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 50 training [time: 0.09s, train loss: 0.3819]
+25 Nov 11:23    INFO  epoch 50 evaluating [time: 1.00s, valid_score: 0.296427]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1776), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0749), 'mrr@50': np.float64(0.0616), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0972), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1616), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0693), 'mrr@50': np.float64(0.0619), 'crecall': tensor(0.2964), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0972), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 51 training [time: 0.09s, train loss: 0.3687]
+25 Nov 11:23    INFO  epoch 51 evaluating [time: 1.00s, valid_score: 0.296012]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1771), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0747), 'mrr@50': np.float64(0.0613), 'crecall': tensor(0.2960), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.162), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0694), 'mrr@50': np.float64(0.0619), 'crecall': tensor(0.2960), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 52 training [time: 0.09s, train loss: 0.3547]
+25 Nov 11:23    INFO  epoch 52 evaluating [time: 1.01s, valid_score: 0.295388]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1763), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0744), 'mrr@50': np.float64(0.0614), 'crecall': tensor(0.2954), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1629), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0695), 'mrr@50': np.float64(0.0617), 'crecall': tensor(0.2954), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0720, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 53 training [time: 0.09s, train loss: 0.3355]
+25 Nov 11:23    INFO  epoch 53 evaluating [time: 1.00s, valid_score: 0.296012]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1777), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0748), 'mrr@50': np.float64(0.0617), 'crecall': tensor(0.2960), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1629), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0696), 'mrr@50': np.float64(0.0619), 'crecall': tensor(0.2960), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0980), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0722, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 54 training [time: 0.10s, train loss: 0.3238]
+25 Nov 11:23    INFO  epoch 54 evaluating [time: 1.00s, valid_score: 0.296219]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1773), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0748), 'mrr@50': np.float64(0.0616), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1631), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0697), 'mrr@50': np.float64(0.0619), 'crecall': tensor(0.2962), 'cprecision': tensor(0.0065), 'srecall': tensor(0.0985), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 55 training [time: 0.09s, train loss: 0.3099]
+25 Nov 11:23    INFO  epoch 55 evaluating [time: 1.00s, valid_score: 0.295181]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1766), 'precision@50': np.float64(0.007), 'ndcg@50': np.float64(0.0746), 'mrr@50': np.float64(0.0616), 'crecall': tensor(0.2952), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0989), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1628), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0695), 'mrr@50': np.float64(0.0617), 'crecall': tensor(0.2952), 'cprecision': tensor(0.0064), 'srecall': tensor(0.0989), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0721, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 56 training [time: 0.09s, train loss: 0.2993]
+25 Nov 11:23    INFO  epoch 56 evaluating [time: 1.00s, valid_score: 0.296843]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1777), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.0751), 'mrr@50': np.float64(0.0622), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.1001), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0724, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1634), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0696), 'mrr@50': np.float64(0.0615), 'crecall': tensor(0.2968), 'cprecision': tensor(0.0065), 'srecall': tensor(0.1001), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0724, dtype=torch.float64)})
+25 Nov 11:23    INFO  epoch 57 training [time: 0.09s, train loss: 0.2853]
+25 Nov 11:23    INFO  epoch 57 evaluating [time: 1.00s, valid_score: 0.297050]
+25 Nov 11:23    INFO  valid result: 
+For side A : OrderedDict({'recall@50': np.float64(0.1777), 'precision@50': np.float64(0.0071), 'ndcg@50': np.float64(0.075), 'mrr@50': np.float64(0.062), 'crecall': tensor(0.2971), 'cprecision': tensor(0.0065), 'srecall': tensor(0.1001), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})    
+For side B : OrderedDict({'recall@50': np.float64(0.1636), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0695), 'mrr@50': np.float64(0.0613), 'crecall': tensor(0.2971), 'cprecision': tensor(0.0065), 'srecall': tensor(0.1001), 'sprecision': tensor(0.0022), 'rndcg@50': tensor(0.0723, dtype=torch.float64)})
+25 Nov 11:23    INFO  Finished training, best eval result in epoch 26
+25 Nov 11:23    INFO  Loading model structure and parameters from saved/LFRR-Nov-25-2026_11-22-23.pth
+25 Nov 11:23    INFO  best valid:
+OrderedDict({'For side A': OrderedDict({'recall@50': np.float64(0.1805), 'precision@50': np.float64(0.0072), 'ndcg@50': np.float64(0.0765), 'mrr@50': np.float64(0.0648), 'crecall': tensor(0.3008), 'cprecision': tensor(0.0066), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0729, dtype=torch.float64)}), '\nFor side B': OrderedDict({'recall@50': np.float64(0.1619), 'precision@50': np.float64(0.008), 'ndcg@50': np.float64(0.0692), 'mrr@50': np.float64(0.0621), 'crecall': tensor(0.3008), 'cprecision': tensor(0.0066), 'srecall': tensor(0.0964), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0729, dtype=torch.float64)})})
+25 Nov 11:23    INFO  test result:
+For side A: ({'recall@50': np.float64(0.1738), 'precision@50': np.float64(0.0074), 'ndcg@50': np.float64(0.0716), 'mrr@50': np.float64(0.0618), 'crecall': tensor(0.3045), 'cprecision': tensor(0.0067), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0705, dtype=torch.float64)})
+For side B: ({'recall@50': np.float64(0.1719), 'precision@50': np.float64(0.0083), 'ndcg@50': np.float64(0.0693), 'mrr@50': np.float64(0.0586), 'crecall': tensor(0.3045), 'cprecision': tensor(0.0067), 'srecall': tensor(0.0968), 'sprecision': tensor(0.0021), 'rndcg@50': tensor(0.0705, dtype=torch.float64)})
+{
+ "model": "LFRR",
+ "epochs_cap": 300,
+ "seconds": 72.92115640640259,
+ "best_valid_score": 0.30078935623168945,
+ "side_A": {
+  "recall@50": 0.1738,
+  "precision@50": 0.0074,
+  "ndcg@50": 0.0716,
+  "mrr@50": 0.0618,
+  "crecall": 0.30451586842536926,
+  "cprecision": 0.006743243429809809,
+  "srecall": 0.09682668745517731,
+  "sprecision": 0.0021441441494971514,
+  "rndcg@50": 0.07045362612612613
+ },
+ "side_B": {
+  "recall@50": 0.1719,
+  "precision@50": 0.0083,
+  "ndcg@50": 0.0693,
+  "mrr@50": 0.0586,
+  "crecall": 0.30451586842536926,
+  "cprecision": 0.006743243429809809,
+  "srecall": 0.09682668745517731,
+  "sprecision": 0.0021441441494971514,
+  "rndcg@50": 0.07045362612612613
+ }
+}

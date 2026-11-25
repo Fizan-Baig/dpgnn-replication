@@ -1,0 +1,8 @@
+# My re-implementation (notebooks/DPGNN_Replication_kaggle.ipynb)
+torch>=2.0
+numpy
+pandas
+matplotlib
+# Official-code run (notebooks/DPGNN_Official_Code_kaggle.ipynb) additionally installs:
+# recbole==1.1.1
+# torch_geometric

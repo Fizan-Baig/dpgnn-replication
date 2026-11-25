@@ -1,0 +1,152 @@
+{
+ "device": "cuda",
+ "seeds": [
+  2020,
+  2021,
+  2022
+ ],
+ "ours": {
+  "Popularity": {
+   "recall@50": 0.1171,
+   "ndcg@50": 0.0495,
+   "crecall@50": 0.2351,
+   "srecall@50": 0.0384,
+   "rndcg@50": 0.0495,
+   "A_recall@50": 0.1111,
+   "B_recall@50": 0.123,
+   "recall@50_std": 0.0,
+   "ndcg@50_std": 0.0,
+   "crecall@50_std": 0.0
+  },
+  "DPGNN": {
+   "recall@50": 0.1808,
+   "ndcg@50": 0.0732,
+   "crecall@50": 0.2965,
+   "srecall@50": 0.0856,
+   "rndcg@50": 0.0732,
+   "A_recall@50": 0.1862,
+   "B_recall@50": 0.1753,
+   "recall@50_std": 0.0049,
+   "ndcg@50_std": 0.0015,
+   "crecall@50_std": 0.0041
+  },
+  "LightGCN": {
+   "recall@50": 0.1463,
+   "ndcg@50": 0.0615,
+   "crecall@50": 0.2498,
+   "srecall@50": 0.0731,
+   "rndcg@50": 0.0614,
+   "A_recall@50": 0.1661,
+   "B_recall@50": 0.1264,
+   "recall@50_std": 0.0013,
+   "ndcg@50_std": 0.0005,
+   "crecall@50_std": 0.0013
+  },
+  "BPRMF": {
+   "recall@50": 0.1508,
+   "ndcg@50": 0.0619,
+   "crecall@50": 0.2767,
+   "srecall@50": 0.08,
+   "rndcg@50": 0.0619,
+   "A_recall@50": 0.1646,
+   "B_recall@50": 0.137,
+   "recall@50_std": 0.0022,
+   "ndcg@50_std": 0.0003,
+   "crecall@50_std": 0.0025
+  },
+  "DPGNN w/o contrastive loss": {
+   "recall@50": 0.1898,
+   "ndcg@50": 0.0768,
+   "crecall@50": 0.3211,
+   "srecall@50": 0.0813,
+   "rndcg@50": 0.0768,
+   "A_recall@50": 0.1961,
+   "B_recall@50": 0.1835,
+   "recall@50_std": 0.0101,
+   "ndcg@50_std": 0.0038,
+   "crecall@50_std": 0.0111
+  },
+  "DPGNN w/o one-sided edges": {
+   "recall@50": 0.1886,
+   "ndcg@50": 0.0802,
+   "crecall@50": 0.3222,
+   "srecall@50": 0.1059,
+   "rndcg@50": 0.0802,
+   "A_recall@50": 0.1884,
+   "B_recall@50": 0.1888,
+   "recall@50_std": 0.002,
+   "ndcg@50_std": 0.0005,
+   "crecall@50_std": 0.0025
+  },
+  "DPGNN w/o both": {
+   "recall@50": 0.1711,
+   "ndcg@50": 0.0726,
+   "crecall@50": 0.3027,
+   "srecall@50": 0.0745,
+   "rndcg@50": 0.0726,
+   "A_recall@50": 0.1746,
+   "B_recall@50": 0.1676,
+   "recall@50_std": 0.0019,
+   "ndcg@50_std": 0.0008,
+   "crecall@50_std": 0.0011
+  }
+ },
+ "official": {},
+ "best_epochs": {
+  "DPGNN|2020": 241,
+  "LightGCN|2020": 18,
+  "BPRMF|2020": 30,
+  "DPGNN|2021": 199,
+  "LightGCN|2021": 18,
+  "BPRMF|2021": 34,
+  "DPGNN|2022": 242,
+  "LightGCN|2022": 19,
+  "BPRMF|2022": 25,
+  "DPGNN w/o contrastive loss|2020": 129,
+  "DPGNN w/o one-sided edges|2020": 87,
+  "DPGNN w/o both|2020": 25,
+  "DPGNN w/o contrastive loss|2021": 109,
+  "DPGNN w/o one-sided edges|2021": 76,
+  "DPGNN w/o both|2021": 21,
+  "DPGNN w/o contrastive loss|2022": 315,
+  "DPGNN w/o one-sided edges|2022": 89,
+  "DPGNN w/o both|2022": 33
+ },
+ "train_minutes": {
+  "DPGNN|2020": 10.7,
+  "LightGCN|2020": 5.8,
+  "BPRMF|2020": 0.2,
+  "DPGNN|2021": 9.0,
+  "LightGCN|2021": 5.8,
+  "BPRMF|2021": 0.2,
+  "DPGNN|2022": 10.7,
+  "LightGCN|2022": 5.9,
+  "BPRMF|2022": 0.2,
+  "DPGNN w/o contrastive loss|2020": 2.7,
+  "DPGNN w/o one-sided edges|2020": 3.4,
+  "DPGNN w/o both|2020": 0.4,
+  "DPGNN w/o contrastive loss|2021": 2.4,
+  "DPGNN w/o one-sided edges|2021": 3.1,
+  "DPGNN w/o both|2021": 0.3,
+  "DPGNN w/o contrastive loss|2022": 5.9,
+  "DPGNN w/o one-sided edges|2022": 3.4,
+  "DPGNN w/o both|2022": 0.4
+ },
+ "two_way": {
+  "2020": {
+   "both": 0.2946,
+   "man_side": 0.2791,
+   "woman_side": 0.0382
+  },
+  "2021": {
+   "both": 0.2937,
+   "man_side": 0.2741,
+   "woman_side": 0.0395
+  },
+  "2022": {
+   "both": 0.3013,
+   "man_side": 0.2831,
+   "woman_side": 0.0409
+  }
+ }
+}

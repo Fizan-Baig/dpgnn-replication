@@ -1,0 +1,116 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795605817.502156     144 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+command line args [--model LightGCN --epochs 300 --out /kaggle/working/results_official/official_LightGCN.json] will not be used in RecBole
+25 Nov 11:23    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = dataset/libimseti
+checkpoint_dir = saved/
+show_progress = False
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 30
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'group_by': 'user', 'order': 'RO', 'mode': 'full'}
+repeatable = False
+metrics = ['Recall', 'Precision', 'NDCG', 'MRR']
+topk = [50]
+valid_metric = CRecall
+valid_metric_bigger = True
+eval_batch_size = 2048000
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = male_id
+ITEM_ID_FIELD = female_id
+DIRECT_FIELD = direct
+seq_len = None
+LABEL_FIELD = label
+threshold = {'label': 0.5}
+NEG_PREFIX = neg_
+numerical_features = []
+load_col = {'inter': ['male_id', 'female_id', 'direct', 'biexposure', 'label']}
+unload_col = None
+unused_col = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+biliteral = True
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 128
+n_layers = 3
+reg_weight = 0.0005
+REMAIN_NEG = True
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+max_sent_num = 10
+max_sent_len = 10
+max_longsent_len = 64
+single_spec = True
+local_rank = 0
+device = cuda
+eval_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+25 Nov 11:23    INFO  libimseti
+The number of users: 6392
+Average actions of users: 94.70943514317008
+The number of items: 6517
+Average actions of items: 92.89257213014119
+The number of inters: 605288
+The sparsity of the dataset: 98.54695997740002%
+Remain Fields: ['male_id', 'female_id', 'direct', 'biexposure', 'label']
+25 Nov 11:23    INFO  [Training]: train_batch_size = [4096] negative sampling: [None]
+25 Nov 11:23    INFO  [Evaluation]: eval_batch_size = [2048000] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'group_by': 'user', 'order': 'RO', 'mode': 'full'}]
+Traceback (most recent call last):
+  File "/kaggle/working/CRRS/run_official.py", line 57, in <module>
+    res = run_recbole_pjf(model=args.model, dataset="libimseti",
+                          config_dict={"epochs": args.epochs, "gpu_id": "0", "show_progress": False})
+  File "/kaggle/working/CRRS/recbole_pjf/quick_start/quick_start.py", line 30, in run_recbole_pjf
+    model = get_model(config['model'])(config, train_data.dataset).to(config['device'])
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/recbole/model/general_recommender/lightgcn.py", line 75, in __init__
+    self.norm_adj_matrix = self.get_norm_adj_mat().to(self.device)
+                           ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/dist-packages/recbole/model/general_recommender/lightgcn.py", line 110, in get_norm_adj_mat
+    A._update(data_dict)
+    ^^^^^^^^^
+AttributeError: 'dok_matrix' object has no attribute '_update'. Did you mean: 'update'?
